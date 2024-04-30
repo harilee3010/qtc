@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: Arial, sans-serif;
+}
+.header {
+    background-color: #008040;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    margin-left: 10%;
+}
+.header .logo:hover {
+    transform: scale(1.05)
+}
+.tags {
+    margin: 5px 0 0 20px;
+}
+.tags a {
+    color: black;
+    padding: 0 5px;
+    text-decoration: none;
+}
+.tags a:hover {
+    color: white;
+}
+
+.slogan {
+    font-size: small;
+}
+
+.navbar ul {
+    list-style-type: none;
+}
+
+.navbar li {
+    display:inline;
+    margin-right:20px;
+    color: black;
+    font-weight: bold;
+}
+
+/*header*/
+.home-tracuu{
+    width: 100%;
+    height: 200px;
+    background: url("../Image/heading-bg.png") #e2f4ea;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    min-height: 200px;
+}
+.container div a{
+    text-decoration: none;
+    color: black;
+}
+.container{
+    width: 100%;
+    padding: 15%;
+    align-items: center;
+    justify-content: space-between;
+}
