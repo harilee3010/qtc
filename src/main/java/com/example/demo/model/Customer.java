@@ -16,7 +16,7 @@ public class Customer {
     private String email;
     private String position;
     private String status;
-    private Date dataOff;
+    private Date dateOn;
     private String img;
 
 
@@ -76,12 +76,12 @@ public class Customer {
         this.status = status;
     }
 
-    public Date getDataOff() {
-        return dataOff;
+    public Date getdateOn() {
+        return dateOn;
     }
 
-    public void setDataOff(Date dataOff) {
-        this.dataOff = dataOff;
+    public void setdateOn(Date dateOn) {
+        this.dateOn = dateOn;
     }
 
     public String getImg() {

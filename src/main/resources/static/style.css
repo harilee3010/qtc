@@ -3,10 +3,12 @@
     padding: 0;
 }
 body{
-    font-family: Arial, sans-serif;
+    font-family: "Times New Roman", sans-serif;
+    padding: 0;
+    margin: 0;
 }
 .header {
-    background-color: #008040;
+    background-color: #198754;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -46,12 +48,65 @@ body{
     color: black;
     font-weight: bold;
 }
+/*slidershow*/
+
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+.slider-container button {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    width: 50px;
+    border: none;
+    cursor: pointer;
+}
+.slider-container button:hover{
+    opacity: 1;
+    background: #198754;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.slider {
+    display: flex;
+    flex-direction: row;
+    width: 200%;
+    transition: transform 0.5s ease;
+
+}
+
+.slider img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 
 /*header*/
 .home-tracuu{
+    position: relative;
     width: 100%;
     height: 200px;
-    background: url("../Image/heading-bg.png") #e2f4ea;
+    background: url("static/Image/heading-bg.png") #e2f4ea;
     background-position: right bottom;
     background-repeat: no-repeat;
     display: flex;
@@ -63,8 +118,53 @@ body{
     color: black;
 }
 .container{
-    width: 100%;
-    padding: 15%;
-    align-items: center;
-    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    padding: 20px;
 }
+.lookup {
+    position: relative;
+    cursor: pointer;
+}
+
+.lookup .content {
+    display: none; /* Ẩn nội dung ban đầu */
+    position: absolute;
+    background-color: #198754;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    padding: 5px;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    height: fit-content;
+    z-index: 1;
+}
+.lookup .content .style-a{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.lookup .content a{
+    padding: 10px;
+}
+
+.lookup:hover .content {
+    display: block; /* Hiển thị nội dung khi hover */
+}
+
+
+/*footer*/
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
