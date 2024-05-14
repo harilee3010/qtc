@@ -10,14 +10,17 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String manv;
     private String name;
+    private String img;
     private String address;
+    private String cmnd;
     private String phone;
     private String email;
     private String position;
-    private String status;
     private Date dateOn;
-    private String img;
+    private String status;
+    private Date dateOff;
 
 
     public int getId() {
@@ -26,6 +29,14 @@ public class Customer {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getManv() {
+        return manv;
+    }
+
+    public void setManv(String manv) {
+        this.manv = manv;
     }
 
     public String getName() {
@@ -76,11 +87,11 @@ public class Customer {
         this.status = status;
     }
 
-    public Date getdateOn() {
+    public Date getDateOn() {
         return dateOn;
     }
 
-    public void setdateOn(Date dateOn) {
+    public void setDateOn(Date dateOn) {
         this.dateOn = dateOn;
     }
 
@@ -90,5 +101,21 @@ public class Customer {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getCmnd() {
+        return cmnd;
+    }
+
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
+    }
+
+    public Date getDateOff() {
+        return dateOff;
+    }
+
+    public void setDateOff(Date dateOff) {
+        this.dateOff = dateOff;
     }
 }

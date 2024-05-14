@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="admin.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="Image/logo.png">
+        <h2>quocthuan.net</h2>
+    </header>
+
+    <aside class="sidebar">
+        <ul class="nav">
+            <li class="nav-title">Quản trị</li>
+            <li class="nav-item"><a class="nav-link active"><i class="fa fa-home"></i> Đơn hàng</a></li>
+            <li class="nav-item"><a class="nav-link"><i class="fa fa-th-large"></i> Nhân viên</a></li>
+            <li class="nav-item"><a class="nav-link"><i class="fa fa-file-text-o"></i> Sản phẩm</a></li>
+            <li class="nav-item"><a class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a></li>
+            <li class="nav-item">
+                <hr>
+            </li>
+            <li class="nav-item">
+                <a href="index.html" class="nav-link" onclick="logOutAdmin(); return true;">
+                    <i class="fa fa-arrow-left"></i>
+                    Đăng xuất (về Trang chủ)
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+
+    <div class="nhanvien">
+        <table class="table-header">
+            <tr>
+                <!-- Theo độ rộng của table content -->
+                <th title="Sắp xếp" style="width: 10%">Mã NV <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 10%">Họ và tên <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 10%">Điện thoại <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 10%">Email <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 10%">CMND <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 15%">Địa chỉ <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 10%">Chức vụ <i class="fa fa-sort"></i></th>
+                <th title="Sắp xếp" style="width: 10%">Ngày vào <i class="fa fa-sort"></i></th>
+                <th style="width: 5%">Nghỉ</th>
+                <th title="Sắp xếp" style="width: 10%">Ngày nghỉ <i class="fa fa-sort"></i></th>
+            </tr>
+        </table>
+
+        <div class="table-content">
+        </div>
+
+        <div class="table-footer">
+            <select name="kieuTimSanPham">
+                <option value="ma">Tìm theo mã</option>
+                <option value="ten">Tìm theo tên</option>
+            </select>
+            <input type="text" placeholder="Tìm kiếm...">
+            <button onclick="document.getElementById('khungThemSanPham').style.transform = 'scale(1)'">
+                <i class="fa fa-plus-square"></i>
+                Thêm nhân viên
+            </button>
+        </div>
+
+        <div id="khungThemSanPham" class="overlay" >
+            <span class="close" onclick="this.parentElement.style.transform = 'scale(0)';">&times;</span>
+            <table class="overlayTable table-outline table-content table-header">
+                <tr>
+                    <th colspan="2">Thêm Nhân Viên</th>
+                </tr>
+                <tr>
+                    <td>Chức vụ:</td>
+                    <td>
+                        <select onchange="autoMaSanPham(this.value)" name="position">
+                            <script>
+                                var company = ["Nhân viên", "Cộng tác viên", "Sinh viên thực tập"];
+                                for(var c of company) {
+                                    document.writeln(`<option value="`+c+`">`+c+`</option>`);
+                                }
+                            </script>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mã Nhân Viên:</td>
+                    <td><input type="text" id="maspThem" readonly name="manv"></td>
+                </tr>
+                <tr>
+                    <td>Họ và tên:</td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+
+                <tr>
+                    <td>Hình:</td>
+                    <td>
+                        <img class="hinhDaiDien" id="anhDaiDienSanPhamThem" src="">
+                        <input type="file" accept="image/*" name="img">
+                    </td>
+                </tr>
+                <tr>
+                    <td>CMND:</td>
+                    <td><input type="text" name="cmnd"></td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ:</td>
+                    <td><input type="text" name="address"></td>
+                </tr>
+                <tr>
+                    <td>Điện thoại:</td>
+                    <td><input type="text" name="phone"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Ngày vào:</td>
+                    <td><input type="date" placeholder="Chọn ngày vào" name="dateOn"></td>
+                </tr>
+                <tr>
+                    <td>Nghỉ:</td>
+                    <td><input type="checkbox" id="myCheckbox" name="status"></td>
+                </tr>
+                <tr>
+                    <td>Ngày nghỉ:</td>
+                    <td><input type="date" placeholder="Chọn ngày vào" id="ngayVao" name="dateOff"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="table-footer"> <button onclick= "addCustomer()">THÊM</button> </td>
+                </tr>
+            </table>
+        </div>
+        <div id="khungSuaSanPham" class="overlay"></div>
+    </div>
+</body>
+<script>
+    function autoMaSanPham(chucVu) {
+        // var convertedChucVu = chucVu.toLowerCase().replace(/\s+/g, '-');
+        // document.getElementById("maspThem").value = convertedChucVu
+        var xhr = new XMLHttpRequest();
+        var convertedChucVu = chucVu.toLowerCase().replace(/\s+/g, '-').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        var url = '/customers/get-next-employee-id?chucVu=' + encodeURIComponent(convertedChucVu);
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var nextIdString = xhr.responseText;
+                var d = new Date();
+                var year = d.getFullYear().toString().substr(-2);
+                var chucVuValue = "";
+
+                switch (chucVu) {
+                    case "Nhân viên":
+                        chucVuValue = "0";
+                        break;
+                    case "Cộng tác viên":
+                        chucVuValue = "1";
+                        break;
+                    case "Sinh viên thực tập":
+                        chucVuValue = "2";
+                        break;
+                    default:
+                        chucVuValue = "0";
+                }
+
+                // Định dạng số thành chuỗi và thêm số không vào đầu nếu cần
+                var paddedNextId = padWithZeroes(nextIdString, 3);
+
+                var maNhanVien = "QTC" + year + chucVuValue + paddedNextId;
+                document.getElementById("maspThem").value = maNhanVien;
+
+                // Hàm thêm số không vào đầu chuỗi để cố định số lượng chữ số
+                function padWithZeroes(str, length) {
+                    var padded = str;
+                    while (padded.length < length) {
+                        padded = '0' + padded;
+                    }
+                    return padded;
+                }
+            }
+        };
+        xhr.send();
+    }
+</script>
+</html>

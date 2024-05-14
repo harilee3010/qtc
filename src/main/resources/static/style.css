@@ -106,18 +106,18 @@ body{
     position: relative;
     width: 100%;
     height: 200px;
-    background: url("static/Image/heading-bg.png") #e2f4ea;
+    background: url("Image/heading-bg.png") #e2f4ea;
     background-position: right bottom;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
     min-height: 200px;
 }
-.container div a{
+.home-tracuu .container div a{
     text-decoration: none;
     color: black;
 }
-.container{
+.home-tracuu .container{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -168,3 +168,37 @@ footer {
     bottom: 0;
 }
 
+/*admin-login*/
+.login-backgr{
+    background-color: #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-backgr .container{
+     display: flex;
+    height: 740px;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+
+}
+.border-container{
+    background-color: white;
+    padding: 50px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.login{
+     display: flex;
+     flex-direction: column;
+    width: 400px;
+    gap: 5px;
+}
+.login input{
+    height: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
